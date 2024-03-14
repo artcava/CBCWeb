@@ -53,12 +53,6 @@
             var jdata = JSON.parse(jsonData);
             // Create the data table.
             var data = new google.visualization.DataTable(jsonData);
-            // data.addColumn('string', 'Belonging');
-            // data.addColumn('number', 'Days');
-            // data.addRows([
-            //     ['After', 10000],
-            //     ['Before', 8000]
-            // ]);
 
             // Set chart options
             var options = {
@@ -71,6 +65,7 @@
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.PieChart(document.getElementById('chart'));
             chart.draw(data, options);
+
             document.getElementById('CalcName').textContent = jdata.calcName;
             document.getElementById('EventName').textContent = jdata.name;
             document.getElementById('EventDescription').innerHTML = jdata.description;
