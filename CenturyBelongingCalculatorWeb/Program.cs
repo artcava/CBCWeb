@@ -43,36 +43,37 @@ try
     builder.Services.AddTransient<IEmailSender, EmailSender>();
     builder.Services.Configure<AuthMessageSenderOptions>(config);
 
-    builder.Services.AddAuthentication()
-        .AddGoogle(googleOptions =>
-        {
-            IConfigurationSection googleAuthNSection =
-            config.GetSection("Authentication:Google");
-            googleOptions.ClientId = googleAuthNSection["ClientId"];
-            googleOptions.ClientSecret = googleAuthNSection["ClientSecret"];
-        })
-        .AddFacebook(facebookOptions =>
-        {
-            IConfigurationSection facebookAuthNSection =
-            config.GetSection("Authentication:Facebook");
-            facebookOptions.ClientId = facebookAuthNSection["ClientId"];
-            facebookOptions.ClientSecret = facebookAuthNSection["ClientSecret"];
-        })
-        .AddMicrosoftAccount(microsoftOptions =>
-        {
-            IConfigurationSection microsoftAuthNSection =
-            config.GetSection("Authentication:Microsoft");
-            microsoftOptions.ClientId = microsoftAuthNSection["ClientId"];
-            microsoftOptions.ClientSecret = microsoftAuthNSection["ClientSecret"];
-        })
-        .AddTwitter(twitterOptions =>
-        {
-            IConfigurationSection twitterAuthNSection =
-            config.GetSection("Authentication:Twitter");
-            twitterOptions.ConsumerKey = twitterAuthNSection["ConsumerKey"];
-            twitterOptions.ConsumerSecret = twitterAuthNSection["ConsumerSecret"];
-            twitterOptions.RetrieveUserDetails = true;
-        });
+    builder.Services.AddAuthentication() //Abilita ciascun servizio quando è disponibile.
+        //.AddGoogle(googleOptions =>
+        //{
+        //    IConfigurationSection googleAuthNSection =
+        //    config.GetSection("Authentication:Google");
+        //    googleOptions.ClientId = googleAuthNSection["ClientId"];
+        //    googleOptions.ClientSecret = googleAuthNSection["ClientSecret"];
+        //})
+        //.AddFacebook(facebookOptions =>
+        //{
+        //    IConfigurationSection facebookAuthNSection =
+        //    config.GetSection("Authentication:Facebook");
+        //    facebookOptions.ClientId = facebookAuthNSection["ClientId"];
+        //    facebookOptions.ClientSecret = facebookAuthNSection["ClientSecret"];
+        //})
+        //.AddMicrosoftAccount(microsoftOptions =>
+        //{
+        //    IConfigurationSection microsoftAuthNSection =
+        //    config.GetSection("Authentication:Microsoft");
+        //    microsoftOptions.ClientId = microsoftAuthNSection["ClientId"];
+        //    microsoftOptions.ClientSecret = microsoftAuthNSection["ClientSecret"];
+        //})
+        //.AddTwitter(twitterOptions =>
+        //{
+        //    IConfigurationSection twitterAuthNSection =
+        //    config.GetSection("Authentication:Twitter");
+        //    twitterOptions.ConsumerKey = twitterAuthNSection["ConsumerKey"];
+        //    twitterOptions.ConsumerSecret = twitterAuthNSection["ConsumerSecret"];
+        //    twitterOptions.RetrieveUserDetails = true;
+        //})
+        ;
 
     #endregion
 
