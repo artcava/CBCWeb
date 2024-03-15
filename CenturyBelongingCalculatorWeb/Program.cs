@@ -1,7 +1,9 @@
 using CenturyBelongingCalculator.Application;
 using CenturyBelongingCalculator.Infrastructure;
 using CenturyBelongingCalculator.Web.Areas.Identity.Data;
+using CenturyBelongingCalculator.Web.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Reflection;
@@ -37,6 +39,9 @@ try
     builder.Services.AddInfrastractureService(config);
 
     builder.Services.AddRazorPages();
+
+    builder.Services.AddTransient<IEmailSender, EmailSender>();
+    builder.Services.Configure<AuthMessageSenderOptions>(config);
 
     builder.Services.AddAuthentication()
         .AddGoogle(googleOptions =>

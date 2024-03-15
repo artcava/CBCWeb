@@ -2,16 +2,15 @@
 using CenturyBelongingCalculator.Application.Features;
 using CenturyBelongingCalculator.Domain;
 
-namespace CenturyBelongingCalculator.Application.Common
+namespace CenturyBelongingCalculator.Application.Common;
+
+public class MapperProfile : Profile
 {
-    public class MapperProfile : Profile
+    public MapperProfile()
     {
-        public MapperProfile()
-        {
-            //Event
-            CreateMap<EventModel, Event>();
-            //Calc
-            CreateMap<CalcModel, Calc>();
-        }
+        //Event
+        CreateMap<EventModel, Event>();
+        //Calc
+        CreateMap<CalcModel, Calc>();
     }
 }

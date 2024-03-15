@@ -5,11 +5,11 @@ VisualStudioVersion = 17.8.34601.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CenturyBelongingCalculator.Web", "CenturyBelongingCalculatorWeb\CenturyBelongingCalculator.Web.csproj", "{0A8A645B-F898-485B-B52D-0876C15D62A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CenturyBelongingCalculator.Domain", "CenturyBelongingCalculator.Domain\CenturyBelongingCalculator.Domain.csproj", "{56164DA8-E70D-4A20-92C3-F6A0069DA690}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CenturyBelongingCalculator.Domain", "CenturyBelongingCalculator.Domain\CenturyBelongingCalculator.Domain.csproj", "{56164DA8-E70D-4A20-92C3-F6A0069DA690}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CenturyBelongingCalculator.Application", "CenturyBelongingCalculator.Application\CenturyBelongingCalculator.Application.csproj", "{F78511CD-BC89-46DC-80F4-8F183815F843}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CenturyBelongingCalculator.Application", "CenturyBelongingCalculator.Application\CenturyBelongingCalculator.Application.csproj", "{F78511CD-BC89-46DC-80F4-8F183815F843}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CenturyBelongingCalculator.Infrastructure", "CenturyBelongingCalculator.Infrastructure\CenturyBelongingCalculator.Infrastructure.csproj", "{172A3AD5-894E-4F88-9BBC-BCA7E786C394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CenturyBelongingCalculator.Infrastructure", "CenturyBelongingCalculator.Infrastructure\CenturyBelongingCalculator.Infrastructure.csproj", "{172A3AD5-894E-4F88-9BBC-BCA7E786C394}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
