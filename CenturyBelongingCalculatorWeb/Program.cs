@@ -2,11 +2,11 @@ using CenturyBelongingCalculator.Application;
 using CenturyBelongingCalculator.Infrastructure;
 using CenturyBelongingCalculator.Web.Areas.Identity.Data;
 using CenturyBelongingCalculator.Web.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System.Reflection;
 
 //SeriLog
 Log.Logger = new LoggerConfiguration()
@@ -29,6 +29,7 @@ try
 
     builder.Services.AddDbContext<AuthenticationDbContext>(options => options.UseSqlServer(config.GetConnectionString("ApplicationDbContextConnection")));
     builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+        .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<AuthenticationDbContext>();
 
     if (builder.Environment.IsDevelopment()) { builder.Services.AddDatabaseDeveloperPageExceptionFilter(); }
@@ -75,9 +76,47 @@ try
         //})
         ;
 
+    builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("RequireAdministratorRole",
+                 policy => policy.RequireRole("Admin"));
+        options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+    });
+
     #endregion
 
     var app = builder.Build();
+
+    #region Seed roles and default Admin user
+    using (var scope = app.Services.CreateScope())
+    {
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        var roles = new[] { "Admin", "Member" };
+
+        foreach (var role in roles)
+        {
+            if (!await roleManager.RoleExistsAsync(role))
+            {
+                await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
+
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+        var mail = config["AdminUser"];
+        if(mail != null)
+        {
+            var user = await userManager.FindByEmailAsync(mail);
+            if(user != null) 
+            {
+                var exists = await userManager.IsInRoleAsync(user, "Admin");
+                if (!exists)
+                    await userManager.AddToRoleAsync(user, "Admin");
+            }
+        }
+    }
+    #endregion
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
