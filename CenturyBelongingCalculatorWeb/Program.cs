@@ -44,19 +44,19 @@ try
     builder.Services.Configure<AuthMessageSenderOptions>(config);
 
     builder.Services.AddAuthentication() //Abilita ciascun servizio quando è disponibile.
+        .AddFacebook(facebookOptions =>
+        {
+            IConfigurationSection facebookAuthNSection = config.GetSection("Authentication:Facebook");
+            facebookOptions.AppId = facebookAuthNSection["ClientId"];
+            facebookOptions.AppSecret = facebookAuthNSection["ClientSecret"];
+            facebookOptions.AccessDeniedPath = "/AccessDeniedPathInfo";
+        })
         //.AddGoogle(googleOptions =>
         //{
         //    IConfigurationSection googleAuthNSection =
         //    config.GetSection("Authentication:Google");
         //    googleOptions.ClientId = googleAuthNSection["ClientId"];
         //    googleOptions.ClientSecret = googleAuthNSection["ClientSecret"];
-        //})
-        //.AddFacebook(facebookOptions =>
-        //{
-        //    IConfigurationSection facebookAuthNSection =
-        //    config.GetSection("Authentication:Facebook");
-        //    facebookOptions.ClientId = facebookAuthNSection["ClientId"];
-        //    facebookOptions.ClientSecret = facebookAuthNSection["ClientSecret"];
         //})
         //.AddMicrosoftAccount(microsoftOptions =>
         //{
