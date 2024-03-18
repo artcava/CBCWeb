@@ -1,0 +1,16 @@
+﻿@page
+@model CenturyBelongingCalculator.Web.Pages.AccessDeniedPathInfoModel
+@{
+    ViewData["Title"] = "Access denied";
+}
+<header>
+    <h1 class="text-danger">@ViewData["Title"]</h1>
+    <p class="text-danger">You do not have access to this resource.</p>
+    <span>
+        <ul>
+            <li>Remote authentication was canceled.</li>
+            <li>This app requires authentication.</li>
+            <li>To try sign-in again, select the Login link.</li>
+        </ul>
+    </span>
+</header>
