@@ -97,9 +97,12 @@ try
 
         foreach (var role in roles)
         {
-            if (!await roleManager.RoleExistsAsync(role))
+            Task<bool> hasRole = roleManager.RoleExistsAsync(role);
+            hasRole.Wait();
+            if (!hasRole.Result)
             {
-                await roleManager.CreateAsync(new IdentityRole(role));
+                Task<IdentityResult> roleResult = roleManager.CreateAsync(new IdentityRole(role));
+                roleResult.Wait();
             }
         }
 
@@ -107,12 +110,18 @@ try
         var mail = config["AdminUser"];
         if(mail != null)
         {
-            var user = await userManager.FindByEmailAsync(mail);
-            if(user != null) 
+            Task<IdentityUser?> tUser = userManager.FindByEmailAsync(mail);
+            tUser.Wait();
+            var user = tUser.Result;
+            if (user != null)
             {
-                var exists = await userManager.IsInRoleAsync(user, "Admin");
-                if (!exists)
-                    await userManager.AddToRoleAsync(user, "Admin");
+                Task<bool> exists = userManager.IsInRoleAsync(user, "Admin");
+                exists.Wait();
+                if (!exists.Result)
+                {
+                    Task<IdentityResult> result = userManager.AddToRoleAsync(user, "Admin");
+                    result.Wait();
+                }
             }
         }
     }
