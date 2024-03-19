@@ -52,13 +52,12 @@ try
             facebookOptions.AppSecret = facebookAuthNSection["ClientSecret"];
             facebookOptions.AccessDeniedPath = "/AccessDeniedPathInfo";
         })
-        //.AddGoogle(googleOptions =>
-        //{
-        //    IConfigurationSection googleAuthNSection =
-        //    config.GetSection("Authentication:Google");
-        //    googleOptions.ClientId = googleAuthNSection["ClientId"];
-        //    googleOptions.ClientSecret = googleAuthNSection["ClientSecret"];
-        //})
+        .AddGoogle(googleOptions =>
+        {
+            IConfigurationSection googleAuthNSection = config.GetSection("Authentication:Google");
+            googleOptions.ClientId = googleAuthNSection["ClientId"];
+            googleOptions.ClientSecret = googleAuthNSection["ClientSecret"];
+        })
         //.AddMicrosoftAccount(microsoftOptions =>
         //{
         //    IConfigurationSection microsoftAuthNSection =
@@ -88,21 +87,6 @@ try
     #endregion
 
     var app = builder.Build();
-
-    #region Seed roles and default Admin user
-    using (var scope = app.Services.CreateScope())
-    {
-        var services = scope.ServiceProvider;
-
-        var context=services.GetRequiredService<AuthenticationDbContext>();
-        context.Database.Migrate();
-
-        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-        IdentitySeedData.Initialize(context, userManager, roleManager).Wait();
-    }
-    #endregion
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
