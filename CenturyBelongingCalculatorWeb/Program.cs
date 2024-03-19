@@ -67,9 +67,8 @@ try
         .AddTwitter(twitterOptions =>
         {
             IConfigurationSection twitterAuthNSection = config.GetSection("Authentication:Twitter");
-            twitterOptions.ConsumerKey = twitterAuthNSection["ConsumerKey"];
-            twitterOptions.ConsumerSecret = twitterAuthNSection["ConsumerSecret"];
-            twitterOptions.RetrieveUserDetails = true;
+            twitterOptions.ClientId = twitterAuthNSection["ClientId"];
+            twitterOptions.ClientSecret = twitterAuthNSection["ClientSecret"];
         });
 
     builder.Services.AddAuthorization(options =>
