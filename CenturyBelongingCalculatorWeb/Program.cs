@@ -58,22 +58,19 @@ try
             googleOptions.ClientId = googleAuthNSection["ClientId"];
             googleOptions.ClientSecret = googleAuthNSection["ClientSecret"];
         })
-        //.AddMicrosoftAccount(microsoftOptions =>
-        //{
-        //    IConfigurationSection microsoftAuthNSection =
-        //    config.GetSection("Authentication:Microsoft");
-        //    microsoftOptions.ClientId = microsoftAuthNSection["ClientId"];
-        //    microsoftOptions.ClientSecret = microsoftAuthNSection["ClientSecret"];
-        //})
-        //.AddTwitter(twitterOptions =>
-        //{
-        //    IConfigurationSection twitterAuthNSection =
-        //    config.GetSection("Authentication:Twitter");
-        //    twitterOptions.ConsumerKey = twitterAuthNSection["ConsumerKey"];
-        //    twitterOptions.ConsumerSecret = twitterAuthNSection["ConsumerSecret"];
-        //    twitterOptions.RetrieveUserDetails = true;
-        //})
-        ;
+        .AddMicrosoftAccount(microsoftOptions =>
+        {
+            IConfigurationSection microsoftAuthNSection = config.GetSection("Authentication:Microsoft");
+            microsoftOptions.ClientId = microsoftAuthNSection["ClientId"];
+            microsoftOptions.ClientSecret = microsoftAuthNSection["ClientSecret"];
+        })
+        .AddTwitter(twitterOptions =>
+        {
+            IConfigurationSection twitterAuthNSection = config.GetSection("Authentication:Twitter");
+            twitterOptions.ConsumerKey = twitterAuthNSection["ConsumerKey"];
+            twitterOptions.ConsumerSecret = twitterAuthNSection["ConsumerSecret"];
+            twitterOptions.RetrieveUserDetails = true;
+        });
 
     builder.Services.AddAuthorization(options =>
     {
