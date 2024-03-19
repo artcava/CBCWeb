@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CenturyBelongingCalculatorWeb.Pages;
+namespace CenturyBelongingCalculator.Web.Pages;
 
 [AllowAnonymous]
-public class PrivacyModel : PageModel
+public class PrivacyModel : PageModelBase
 {
     private readonly ILogger<PrivacyModel> _logger;
 
