@@ -21,6 +21,7 @@ public class IndexModel : PageModelBase
     public CalcModel Calc { get; set; }
     public async void OnGet()
     {
+
     }
 
     public async Task<ActionResult> OnGetChartData()

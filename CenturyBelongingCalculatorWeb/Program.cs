@@ -92,38 +92,15 @@ try
     #region Seed roles and default Admin user
     using (var scope = app.Services.CreateScope())
     {
-        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-        var roles = new[] { "Admin", "Member" };
+        var services = scope.ServiceProvider;
 
-        foreach (var role in roles)
-        {
-            Task<bool> hasRole = roleManager.RoleExistsAsync(role);
-            hasRole.Wait();
-            if (!hasRole.Result)
-            {
-                Task<IdentityResult> roleResult = roleManager.CreateAsync(new IdentityRole(role));
-                roleResult.Wait();
-            }
-        }
+        var context=services.GetRequiredService<AuthenticationDbContext>();
+        context.Database.Migrate();
 
         var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-        var mail = config["AdminUser"];
-        if(mail != null)
-        {
-            Task<IdentityUser?> tUser = userManager.FindByEmailAsync(mail);
-            tUser.Wait();
-            var user = tUser.Result;
-            if (user != null)
-            {
-                Task<bool> exists = userManager.IsInRoleAsync(user, "Admin");
-                exists.Wait();
-                if (!exists.Result)
-                {
-                    Task<IdentityResult> result = userManager.AddToRoleAsync(user, "Admin");
-                    result.Wait();
-                }
-            }
-        }
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+        IdentitySeedData.Initialize(context, userManager, roleManager).Wait();
     }
     #endregion
 
