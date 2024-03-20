@@ -1,4 +1,6 @@
-﻿namespace CenturyBelongingCalculator.Application.Features;
+﻿using System.ComponentModel;
+
+namespace CenturyBelongingCalculator.Application.Features;
 
 public class EventModel
 {

@@ -23,7 +23,7 @@ public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Eve
     }
     public async Task<EventModel> Handle(CreateEventCommand request, CancellationToken cancellationToken)
     {
-        var eventEntity = new Event { Description = request.Description, Name = request.Name, EventDate = request.EventDate, Id = Guid.NewGuid() };
+        var eventEntity = new Event { Description = request.Description, Name = request.Name, EventDate = request.EventDate.ToUniversalTime(), Id = Guid.NewGuid() };
         var result = await _eventRepository.CreateEventAsync(eventEntity);
         return _mapper.Map<EventModel>(result);
     }

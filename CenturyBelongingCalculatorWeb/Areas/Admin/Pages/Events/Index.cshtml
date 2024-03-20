@@ -1,0 +1,52 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Manage Events";
+    Layout = "_EventsLayout";
+}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Event Date</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Events.Count() == 0)
+        {
+            <tr>
+                <th scope="row">--</th>
+                <td colspan="4">Any event created yet, press <b>New</b> button to create first one!</td>
+            </tr>
+        }
+        @foreach (var item in Model.Events)
+        {
+            <tr>
+                <th scope="row">@item.Name</th>
+                <td>@item.Description</td>
+                <td>@item.EventDate.Date</td>
+                <td>
+                    <a class="btn btn-warning fw-bold" asp-page="EditEvent" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger fw-bold" asp-page="DeleteEvent" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="m-1">
+    <a class="btn btn-primary fw-bold" asp-page="CreateEvent">New</a>
+</div>
+
+<div>Found @Model.Events.Count() Events</div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+    </script>
+}

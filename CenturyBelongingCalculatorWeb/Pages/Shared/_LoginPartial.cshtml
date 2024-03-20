@@ -13,6 +13,12 @@
             <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
         </form>
     </li>
+        if (User.IsInRole("Admin"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Admin" asp-page="/Events/Index" title="Manage events">Events</a>
+            </li>
+        }
     }
 else
 {

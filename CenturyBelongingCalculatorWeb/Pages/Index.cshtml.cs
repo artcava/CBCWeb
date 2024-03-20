@@ -1,10 +1,10 @@
 using CenturyBelongingCalculator.Application.Features;
-using CenturyBelongingCalculator.Web.Pages;
+using CenturyBelongingCalculator.Web.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CenturyBelongingCalculatorWeb.Pages;
+namespace CenturyBelongingCalculator.Web.Pages;
 
 [AllowAnonymous]
 public class IndexModel : PageModelBase

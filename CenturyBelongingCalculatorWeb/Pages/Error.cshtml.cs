@@ -1,9 +1,9 @@
-using CenturyBelongingCalculator.Web.Pages;
+using CenturyBelongingCalculator.Web.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace CenturyBelongingCalculatorWeb.Pages;
+namespace CenturyBelongingCalculator.Web.Pages;
 
 [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 [IgnoreAntiforgeryToken]

@@ -9,8 +9,8 @@ public class MapperProfile : Profile
     public MapperProfile()
     {
         //Event
-        CreateMap<EventModel, Event>();
+        CreateMap<Event, EventModel>();
         //Calc
-        CreateMap<CalcModel, Calc>();
+        CreateMap<Calc, CalcModel>();
     }
 }
