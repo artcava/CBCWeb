@@ -3,7 +3,6 @@ using CenturyBelongingCalculator.Web.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CenturyBelongingCalculator.Web.Areas.Admin.Pages.Events;
 

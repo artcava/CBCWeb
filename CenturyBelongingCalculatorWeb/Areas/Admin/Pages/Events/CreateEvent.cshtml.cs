@@ -34,6 +34,8 @@ public class CreateEventModel : PageModelBase
             {
                 Description = Event.Description,
                 Name = Event.Name,
+                BeforeEventLabel = Event.BeforeEventLabel,
+                AfterEventLabel = Event.AfterEventLabel,
                 EventDate = Event.EventDate
             };
             var result = await _sender.Send(command);

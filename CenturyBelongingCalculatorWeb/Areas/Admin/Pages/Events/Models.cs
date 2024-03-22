@@ -10,6 +10,10 @@ namespace CenturyBelongingCalculator.Web.Areas.Admin.Pages.Events
         public required string Name { get; set; }
         [BindProperty, Required, MinLength(64)]
         public required string Description { get; set; }
+        [BindProperty, Required, MaxLength(16)]
+        public required string BeforeEventLabel { get; set; }
+        [BindProperty, Required, MaxLength(16)]
+        public required string AfterEventLabel { get; set; }
         [BindProperty, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTimeOffset EventDate { get; set; }
     }
@@ -21,6 +25,10 @@ namespace CenturyBelongingCalculator.Web.Areas.Admin.Pages.Events
         public required string Name { get; set; }
         [BindProperty, Required, MinLength(64)]
         public required string Description { get; set; }
+        [BindProperty, Required, MaxLength(16)]
+        public required string BeforeEventLabel { get; set; }
+        [BindProperty, Required, MaxLength(16)]
+        public required string AfterEventLabel { get; set; }
         [BindProperty, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTimeOffset EventDate { get; set; }
     }
