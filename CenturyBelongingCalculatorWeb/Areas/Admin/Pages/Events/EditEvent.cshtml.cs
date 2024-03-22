@@ -29,6 +29,8 @@ public class EditEventModel : PageModelBase
             Id = model.Id,
             Name = model.Name,
             Description = model.Description,
+            BeforeEventLabel = model.BeforeEventLabel ?? string.Empty,
+            AfterEventLabel = model.AfterEventLabel ?? string.Empty,
             EventDate = model.EventDate
         };
         return Page();
@@ -40,8 +42,10 @@ public class EditEventModel : PageModelBase
             var command = new UpdateEventCommand
             {
                 Id = Event.Id,
-                Description = Event.Description,
                 Name = Event.Name,
+                Description = Event.Description,
+                BeforeEventLabel = Event.BeforeEventLabel,
+                AfterEventLabel = Event.AfterEventLabel,
                 EventDate = Event.EventDate
             };
             var result = await _sender.Send(command);

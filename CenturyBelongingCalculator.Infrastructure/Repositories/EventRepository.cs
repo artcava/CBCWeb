@@ -44,6 +44,8 @@ public class EventRepository : IEventRepository
                 .SetProperty(e => e.Name, eventObj.Name)
                 .SetProperty(e => e.Description, eventObj.Description)
                 .SetProperty(e => e.EventDate, eventObj.EventDate)
+                .SetProperty(e => e.BeforeEventLabel, eventObj.BeforeEventLabel)
+                .SetProperty(e => e.AfterEventLabel, eventObj.AfterEventLabel)
             );
     }
 }
