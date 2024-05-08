@@ -18,7 +18,6 @@ public class MyJoinDateModel : PageModelBase
     {
         _logger = logger;
         _sender = sender;
-        _logger.LogInformation("We initialize MyJoinDate model...");
     }
 
     [BindProperty]
@@ -26,7 +25,6 @@ public class MyJoinDateModel : PageModelBase
 
     public async Task<IActionResult> OnGetAsync()
     {
-        _logger.LogInformation("We pass here...");
         var id = User.Identity.GetUserId();
 
         var query = new GetCalcByUserIdQuery { Id = id };

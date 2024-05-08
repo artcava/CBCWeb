@@ -17,7 +17,6 @@ public class NewJoinDateModel : PageModelBase
     {
         _logger = logger;
         _sender = sender;
-        _logger.LogInformation("We initialize MyJoinDate model...");
     }
 
     [BindProperty]
