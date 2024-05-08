@@ -13,7 +13,7 @@ public class GetDaysToJoinDateHandler : IRequestHandler<GetDaysToJoinDateQuery, 
 {
     private readonly IEventRepository _eventRepository;
 
-    public GetDaysToJoinDateHandler(ICalcRepository calcRepository, IEventRepository eventRepository)
+    public GetDaysToJoinDateHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
     }

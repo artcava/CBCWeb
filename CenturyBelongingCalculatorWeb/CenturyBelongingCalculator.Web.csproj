@@ -15,6 +15,7 @@
     <PackageReference Include="AspNet.Security.OAuth.Twitter" Version="8.0.0" />
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.4" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="8.0.3" />
@@ -41,6 +42,12 @@
 
   <ItemGroup>
     <None Include="Pages\AccessDeniedPathInfo.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Member\Data\" />
+    <Folder Include="Areas\Crypto\Data\" />
+    <Folder Include="Areas\Crypto\Pages\" />
   </ItemGroup>
 
 </Project>

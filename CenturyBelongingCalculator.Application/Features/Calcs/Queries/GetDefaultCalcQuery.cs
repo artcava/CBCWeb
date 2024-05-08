@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using CenturyBelongingCalculator.Domain;
-using MediatR;
+﻿using MediatR;
 
 namespace CenturyBelongingCalculator.Application.Features;
 
@@ -8,14 +6,7 @@ public record GetDefaultCalcQuery : IRequest<CalcModel>;
 
 public class GetDefaultCalcsQueryHandler: IRequestHandler<GetDefaultCalcQuery, CalcModel>
 {
-    private readonly ICalcRepository _calcRepository;
-    private readonly IMapper _mapper;
-
-    public GetDefaultCalcsQueryHandler(ICalcRepository calcRepository, IMapper mapper)
-    {
-        _calcRepository = calcRepository;
-        _mapper = mapper;
-    }
+    public GetDefaultCalcsQueryHandler() { }
 
     public async Task<CalcModel> Handle(GetDefaultCalcQuery request, CancellationToken cancellationToken)
     {
@@ -32,7 +23,5 @@ public class GetDefaultCalcsQueryHandler: IRequestHandler<GetDefaultCalcQuery, C
             Id = Guid.NewGuid()
         };
         return calc;
-        //var calcList = _mapper.Map<CalcModel>(calc);
-        //return calcList;
     }
 }
