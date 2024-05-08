@@ -1,0 +1,24 @@
+﻿@page
+@using CenturyBelongingCalculator.Web.Areas.Member.Pages.Calcs
+@model MyJoinDateModel
+@{
+    ViewData["Title"] = "My Join Date";
+}
+<div class="row">
+    <div class="col-sm-12 align-items-center card mb-2 m-1">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="chart" class="card-img"></div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h5 class="card-title" id="CalcName"></h5>
+                    <p class="card-text" id="EventName"></p>
+                    <p class="card-text"><small class="text-muted" id="EventDescription"></small></p>
+                    <p class="card-text"><b>Join Date</b>: <span id="JoinDate"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using CenturyBelongingCalculator.Application.Common;
+﻿using CenturyBelongingCalculator.Application.Common;
 using CenturyBelongingCalculator.Domain;
 using MediatR;
 
@@ -14,12 +13,10 @@ public class GetJoinDateQuery : IQuery<DateTimeOffset>
 public class GetJoinDateHandler : IRequestHandler<GetJoinDateQuery, DateTimeOffset>
 {
     private readonly IEventRepository _eventRepository;
-    private readonly IMapper _mapper;
 
-    public GetJoinDateHandler(IEventRepository eventRepository, IMapper mapper)
+    public GetJoinDateHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
-        _mapper = mapper;
     }
 
     public async Task<DateTimeOffset> Handle(GetJoinDateQuery request, CancellationToken cancellationToken)

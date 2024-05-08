@@ -16,7 +16,36 @@
                     <h5 class="card-title" id="CalcName"></h5>
                     <p class="card-text" id="EventName"></p>
                     <p class="card-text"><small class="text-muted" id="EventDescription"></small></p>
-                    <p class="card-text" id="JoinDate"></p>
+                    <p class="card-text"><b>Join Date</b>: <span id="JoinDate"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 align-items-center card mb-2 m-1">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-body">
+                    <h5 class="card-title">Explanation</h5>
+                    <p class="card-text">
+                        <small class="text-muted">The chart above shows how much time Maravigliosa Creatura spent in the 20th century compared to the time spent so far in the 21st century</small>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-body">
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Day when time spent will be 50% in the 2 Centuries you can call it <b>Join Date</b>
+                        </small>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-body">
+                    @* <h5 class="card-title">Get Your...</h5> *@
+                    <p>
+                        <a asp-area="Member" asp-page="/Calcs/MyJoinDate" class="btn btn-primary">Set mine...</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -64,7 +93,7 @@
             document.getElementById('CalcName').textContent = jdata.calcName;
             document.getElementById('EventName').textContent = jdata.name;
             document.getElementById('EventDescription').innerHTML = jdata.description;
-            document.getElementById('JoinDate').textContent = "JoinDate: " + jdata.joinDate;
+            document.getElementById('JoinDate').textContent = jdata.joinDate;
         }
     </script>
 }

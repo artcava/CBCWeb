@@ -1,0 +1,32 @@
+﻿@page
+@model CenturyBelongingCalculator.Web.Areas.Member.Pages.Calcs.NewJoinDateModel
+@{
+    ViewData["Title"] = "Insert Join Date";
+    // Layout = "_EventsLayout";
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NewJoinDate" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Calc.CalcName" class="control-label"></label>
+                <input asp-for="Calc.CalcName" class="form-control" />
+                <span asp-validation-for="Calc.CalcName" class=" text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Calc.StartDate" class="control-label"></label>
+                <input asp-for="Calc.StartDate" asp-format="{0:yyyy-MM-dd}" type="date" class="form-control" />
+                <span asp-validation-for="Calc.StartDate" class=" text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary fw-bold" />
+                <a class="btn btn-danger fw-bold" asp-area="Member" asp-page="/Calcs/MyJoinDate">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

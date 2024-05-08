@@ -35,13 +35,18 @@ public class CalcRepository : ICalcRepository
             .FirstOrDefaultAsync(c => c.Id == calcId);
     }
 
+    public async Task<Calc> GetCalcByUserAsync(string userId)
+    {
+        return await _calcDbContext.Calcs.AsNoTracking()
+            .FirstOrDefaultAsync(c => c.UserId == userId);
+    }
+
     public async Task<int> UpdateCalcAsync(Calc calcObj)
     {
         return await _calcDbContext.Calcs
             .Where(c => c.Id == calcObj.Id)
             .ExecuteUpdateAsync(setter => setter
                 .SetProperty(c => c.CalcName, calcObj.CalcName)
-                .SetProperty(c => c.EventId, calcObj.EventId)
                 .SetProperty(c => c.StartDate, calcObj.StartDate)
                 .SetProperty(c => c.EndDate, calcObj.EndDate)
                 );

@@ -8,6 +8,7 @@ namespace CenturyBelongingCalculator.Application.Features;
 public class CreateCalcCommand : ICommand<CalcModel>
 {
     public required string CalcName { get; set; }
+    public required string UserId {  get; set; }
     public Guid EventId { get; set; }
     public DateTimeOffset StartDate { get; set; }
     public DateTimeOffset EndDate { get; set; } = DateTimeOffset.Now;
@@ -40,7 +41,7 @@ public class CreateCalcCommandHandler : IRequestHandler<CreateCalcCommand, CalcM
         #endregion
 
 
-        var calcEntity = new Calc { CalcName = request.CalcName, EndDate = request.EndDate, EventId = request.EventId, Id = Guid.NewGuid() };
+        var calcEntity = new Calc { CalcName = request.CalcName, UserId = request.UserId, EndDate = request.EndDate, EventId = request.EventId, Id = Guid.NewGuid() };
         var result = await _calcRepository.CreateCalcAsync(calcEntity);
         return _mapper.Map<CalcModel>(result);
     }
