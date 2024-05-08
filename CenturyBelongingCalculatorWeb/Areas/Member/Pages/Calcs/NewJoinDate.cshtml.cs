@@ -10,14 +10,13 @@ public class NewJoinDateModel : PageModelBase
 {
     private readonly ILogger<NewJoinDateModel> _logger;
     private readonly ISender _sender;
-    //private readonly Guid _event = new("{7DFC583B-A4ED-4FDB-A6B5-3EBA773BD35E}"); //Local
-    private readonly Guid _event = new("{c28832da-0fd4-4831-8145-7d34dc22e4d6}"); //Remote
+    private readonly Guid _event = new("{7DFC583B-A4ED-4FDB-A6B5-3EBA773BD35E}"); //Local
+    //private readonly Guid _event = new("{c28832da-0fd4-4831-8145-7d34dc22e4d6}"); //Remote
 
     public NewJoinDateModel(ILogger<NewJoinDateModel> logger, ISender sender)
     {
         _logger = logger;
         _sender = sender;
-        _logger.LogInformation("We initialize MyJoinDate model...");
     }
 
     [BindProperty]

@@ -41,8 +41,16 @@ public class CreateCalcCommandHandler : IRequestHandler<CreateCalcCommand, CalcM
         #endregion
 
 
-        var calcEntity = new Calc { CalcName = request.CalcName, UserId = request.UserId, EndDate = request.EndDate, EventId = request.EventId, Id = Guid.NewGuid() };
-        var result = await _calcRepository.CreateCalcAsync(calcEntity);
+        var result = await _calcRepository.CreateCalcAsync(new Calc
+        {
+            CalcName = request.CalcName,
+            UserId = request.UserId,
+            StartDate = request.StartDate,
+            EndDate = request.EndDate,
+            EventId = request.EventId,
+            Id = Guid.NewGuid()
+        });
+
         return _mapper.Map<CalcModel>(result);
     }
 }
