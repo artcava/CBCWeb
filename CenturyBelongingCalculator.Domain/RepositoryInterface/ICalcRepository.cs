@@ -8,4 +8,5 @@ public interface ICalcRepository
     Task<Calc> CreateCalcAsync(Calc calcObj);
     Task<int> UpdateCalcAsync(Calc calcObj);
     Task<int> DeleteCalcAsync(Guid calcId);
+
 }

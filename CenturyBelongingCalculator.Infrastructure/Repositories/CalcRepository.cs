@@ -32,12 +32,14 @@ public class CalcRepository : ICalcRepository
     public async Task<Calc> GetCalcByIdAsync(Guid calcId)
     {
         return await _calcDbContext.Calcs.AsNoTracking()
+            .Include(c => c.Event)
             .FirstOrDefaultAsync(c => c.Id == calcId);
     }
 
     public async Task<Calc> GetCalcByUserAsync(string userId)
     {
         return await _calcDbContext.Calcs.AsNoTracking()
+            .Include(c => c.Event)
             .FirstOrDefaultAsync(c => c.UserId == userId);
     }
 
