@@ -1,0 +1,2 @@
+2024-09-20 15:12:46.868 +02:00 [INF] Starting web application
+2024-09-20 15:26:27.121 +02:00 [INF] Starting web application
